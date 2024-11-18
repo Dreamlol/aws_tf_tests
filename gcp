@@ -1,0 +1,1619 @@
+{
+  "displayName": "Dataproc on GCE - Spark Dashboard",
+  "mosaicLayout": {
+    "columns": 48,
+    "tiles": [
+      {
+        "xPos": 15,
+        "yPos": 125,
+        "width": 13,
+        "height": 20,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/job/duration\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_DELTA",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\"",
+                        "metric.label.\"state\"",
+                        "metric.label.\"job_type\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Dataproc Job state duration [95TH PERCENTILE]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 125,
+        "width": 14,
+        "height": 20,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/job/failed_count\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_DELTA",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "STACKED_BAR",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y2",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/job/running_count\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "STACKED_BAR",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y2",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/job/submitted_count\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_DELTA",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "STACKED_BAR",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y2",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "y2Axis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Dataproc Job Queue: Failed, Running, Submitted ",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 15,
+        "yPos": 145,
+        "width": 13,
+        "height": 20,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/yarn/apps\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"status\"",
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "STACKED_BAR",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "YARN application status [SUM], pending apps show yarn queue",
+          "id": ""
+        }
+      },
+      {
+        "yPos": 193,
+        "width": 14,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/bytesRead\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\"",
+                        "metric.label.\"app_id\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/bytesWritten\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Executor bytesRead/Written [SUM], per App and cluster",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 14,
+        "yPos": 193,
+        "width": 14,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/diskBytesSpilled\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Executor - diskBytesSpilled [SUM] per App and cluster",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 28,
+        "yPos": 193,
+        "width": 13,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/shuffleRecordsRead\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/shuffleRecordsWritten\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Executor shuffleRecordsRead/ShuffleRecordsWritten [SUM] per App and cluster",
+          "id": ""
+        }
+      },
+      {
+        "yPos": 115,
+        "width": 48,
+        "height": 66,
+        "widget": {
+          "title": "Job Level Metrics, Dataproc and Yarn",
+          "collapsibleGroup": {
+            "collapsed": false
+          },
+          "id": ""
+        }
+      },
+      {
+        "yPos": 212,
+        "width": 14,
+        "height": 17,
+        "widget": {
+          "timeSeriesTable": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/driver/DAGScheduler/job/allJobs\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\"",
+                        "metric.label.\"app_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": true
+                },
+                "tableTemplate": "",
+                "minAlignmentPeriod": "60s"
+              }
+            ],
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "showFilterBar": false,
+              "pageSize": "0"
+            },
+            "displayColumnType": false
+          },
+          "title": "Jobs per app",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 145,
+        "width": 14,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/yarn/containers\" resource.type=\"cloud_dataproc_cluster\" metric.label.\"status\"!=\"pending\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"status\"",
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "YARN containers [SUM], by status. excluding pending since pending gets huge Check allocated.",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 28,
+        "yPos": 212,
+        "width": 13,
+        "height": 17,
+        "widget": {
+          "timeSeriesTable": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/cpuTime\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
+                      "groupByFields": [
+                        "metric.label.\"app_name\"",
+                        "metric.label.\"app_id\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    },
+                    "pickTimeSeriesFilter": {
+                      "rankingMethod": "METHOD_MEAN",
+                      "numTimeSeries": 30,
+                      "direction": "TOP"
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": true
+                },
+                "tableTemplate": "",
+                "minAlignmentPeriod": "60s"
+              }
+            ],
+            "metricVisualization": "NUMBER",
+            "columnSettings": [
+              {
+                "column": "app_name",
+                "visible": true
+              },
+              {
+                "column": "app_id",
+                "visible": true
+              },
+              {
+                "column": "user_labels.goog-dataproc-cluster-name",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": true
+              }
+            ],
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "showFilterBar": false,
+              "pageSize": "0"
+            },
+            "displayColumnType": false
+          },
+          "title": "Executor cpuTime [95TH PERCENTILE] per app",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 14,
+        "yPos": 212,
+        "width": 14,
+        "height": 17,
+        "widget": {
+          "timeSeriesTable": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/runTime\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "groupByFields": []
+                    },
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_COUNT",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metric.label.\"app_name\""
+                      ]
+                    },
+                    "pickTimeSeriesFilter": {
+                      "rankingMethod": "METHOD_MAX",
+                      "numTimeSeries": 30,
+                      "direction": "TOP"
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": true
+                },
+                "tableTemplate": "",
+                "minAlignmentPeriod": "60s"
+              }
+            ],
+            "metricVisualization": "BAR",
+            "columnSettings": [
+              {
+                "column": "app_id",
+                "visible": true
+              },
+              {
+                "column": "app_name",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": true,
+                "displayName": "number of executors per Application"
+              }
+            ],
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "showFilterBar": false,
+              "pageSize": "0"
+            },
+            "displayColumnType": false
+          },
+          "title": "Number of executors per Application",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 10,
+        "width": 14,
+        "height": 21,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/node/problem_count\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_RATE",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"reason\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Problem count [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "width": 48,
+        "height": 115,
+        "widget": {
+          "title": "Dataproc Cluster level",
+          "collapsibleGroup": {
+            "collapsed": false
+          },
+          "id": ""
+        }
+      },
+      {
+        "xPos": 15,
+        "yPos": 10,
+        "width": 15,
+        "height": 21,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/capacity_deviation\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Cluster capacity deviation [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 95,
+        "width": 17,
+        "height": 20,
+        "widget": {
+          "logsPanel": {
+            "filter": "protoPayload.methodName=\"compute.instances.preempted\"\nresource.type=\"gce_instance\"\nlog_name:\"logs/cloudaudit.googleapis.com%2Fsystem_event\"",
+            "resourceNames": [
+              "projects/yunus-playground/locations/global/logScopes/_Default"
+            ]
+          },
+          "title": "",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 18,
+        "yPos": 95,
+        "width": 19,
+        "height": 19,
+        "widget": {
+          "logsPanel": {
+            "filter": "logName:\"logs/dataproc.googleapis.com%2Fautoscaler\"\nresource.type=\"cloud_dataproc_cluster\"\n",
+            "resourceNames": [
+              "projects/yunus-playground/locations/global/logScopes/_Default"
+            ]
+          },
+          "title": "",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 29,
+        "yPos": 40,
+        "width": 14,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_05",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "CPU utilization [95TH and 5TH PERCENTILE], among all VMs, per cluster",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 15,
+        "yPos": 40,
+        "width": 14,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
+                      "groupByFields": [
+                        "metric.label.\"state\"",
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "VM Instance - Memory utilization [95TH PERCENTILE]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 15,
+        "yPos": 67,
+        "width": 12,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/yarn/memory_size\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"status\"",
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "YARN memory size [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 27,
+        "yPos": 67,
+        "width": 13,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/yarn/nodemanagers\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"status\"",
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "YARN NodeManagers [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "width": 32,
+        "height": 10,
+        "widget": {
+          "title": "Dataproc Level Metrics",
+          "text": {
+            "content": "In this part of the dashboard, you may see overall cluster health.\n\nYou can see the number of VMs in a cluster and overall resource usage. You need to install [ops-agent](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/opsagent) for VM based metrics for cluster above Dataproc 2.2 version\n\nAt the bottom, you will find information on the preempted VMs and autoscaler messages. They help you understand the cluster sizing.\n\n\n\n",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 115,
+        "width": 43,
+        "height": 10,
+        "widget": {
+          "title": "Job queues and their duration",
+          "text": {
+            "content": "In this section, you will observe the number of applications running in the cluster.\n\nJobs that are submitted to Dataproc can wait for resources in Dataproc Job queue or Yarn internal queues.\nThis dashboard let's you see the situation whether any application waits for resources. The details of job states is explained [here](https://cloud.google.com/dataproc/docs/concepts/jobs/life-of-a-job#dataproc_jobs_flow). There are pending and running states that reveal that the job waits to be scheduled. NOTE THAT dataproc job state of queued is a substate which is not shown here. You see it as running.\n\nThe running_N yarn queue metric provides the number of jobs in queue as a histogram.Running_0  is number of jobs from 0to60 minutes, running_60 is for 60 to 300 minutes, and so forth. For these metrics, you have to **[enable](https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#enable_custom_metric_collection) custom metrics of YARN**",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 67,
+        "width": 14,
+        "height": 16,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/cluster/yarn/pending_memory_size\" resource.type=\"cloud_dataproc_cluster\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "resource.label.\"cluster_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "YARN pending memory size [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 28,
+        "yPos": 125,
+        "width": 16,
+        "height": 20,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/yarn/QueueMetrics/running_0\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/yarn/QueueMetrics/running_60\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/yarn/QueueMetrics/running_300\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/yarn/QueueMetrics/running_1440\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Number of jobs per duration. Running_0=0to60, running60=60to300, running300=300to1440",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 40,
+        "width": 14,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_05",
+                      "groupByFields": [
+                        "metadata.user_labels.\"goog-dataproc-cluster-name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "VM Instance - Used memory [5TH PERCENTILE]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 31,
+        "width": 34,
+        "height": 9,
+        "widget": {
+          "title": "VM based Memory/CPU Usage",
+          "text": {
+            "content": " ### The 5th and 95th percentile for VM memory and CPU utilization indicate difference between the jobs.\n\n If the difference is high between 95th percentile and 5th Percentile, this means that some jobs are heavy.\n\n If the 5th percentile is too low, that also means that some VMs are idle.",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 58,
+        "width": 34,
+        "height": 9,
+        "widget": {
+          "title": "YARN memory usage",
+          "text": {
+            "content": " ### YARN pending memory indicates the need for autoscaling \n\nWhen there is pending memory for some time, this means that jobs are not able to get what they need.\nIt is better to see an autoscaling.\n\nThe count yarn node manager practically indicates the number of VMs as each VM has a single node manager. You can observe autoscaling from this view. ",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 86,
+        "width": 34,
+        "height": 9,
+        "widget": {
+          "title": "Logs for Preemption and Autoscaling",
+          "text": {
+            "content": " ### Autoscaling related logs\n\n The below logs indicate the behavior of AutoScaling and if you are using preemptible VMs, they are also shown in here.\n\nAutoscaling logs tell you what is the current status of the cluster, is it scaling, cooling down etc. ",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "yPos": 181,
+        "width": 38,
+        "height": 12,
+        "widget": {
+          "title": "Spark Custom Metrics dashboard",
+          "text": {
+            "content": "### Spark Application and Executor level performance\n\nFirst of all, you have to **[enable](https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#enable_custom_metric_collection) custom metrics for spark** to see these.\n\nThe below dashboards tries to uncover the size of Applications, which executors take long etc. \n\nLarge amounts of shuffled data indicate that we are moving too much data around. We may want to check your group by, join statements. Read only the data that you need.\n\nSpilled disk bytes indicate that executor memory is not enough and we start storing dataframes in disk. This makes the application slower. ",
+            "format": "MARKDOWN",
+            "style": {
+              "backgroundColor": "#FFFFFF",
+              "textColor": "#212121",
+              "horizontalAlignment": "H_LEFT",
+              "verticalAlignment": "V_TOP",
+              "padding": "P_EXTRA_SMALL",
+              "fontSize": "FS_LARGE",
+              "pointerLocation": "POINTER_LOCATION_UNSPECIFIED"
+            }
+          },
+          "id": ""
+        }
+      },
+      {
+        "yPos": 229,
+        "width": 14,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/job/yarn/memory_seconds\" resource.type=\"cloud_dataproc_job\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"application_id\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Consumed memory seconds by job [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 14,
+        "yPos": 229,
+        "width": 14,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"dataproc.googleapis.com/job/yarn/vcore_seconds\" resource.type=\"cloud_dataproc_job\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MEAN",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"application_id\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Consumed vcore seconds by job [SUM]",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 1,
+        "yPos": 165,
+        "width": 24,
+        "height": 16,
+        "widget": {
+          "logsPanel": {
+            "filter": "logName:\"/logs/google.dataproc.agent\"\n",
+            "resourceNames": [
+              "projects/yunus-playground/locations/global/logScopes/_Default"
+            ]
+          },
+          "title": "",
+          "id": ""
+        }
+      },
+      {
+        "xPos": 28,
+        "yPos": 229,
+        "width": 13,
+        "height": 18,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/ExecutorMetrics/JVMHeapMemory\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_MAX",
+                      "groupByFields": [
+                        "metric.label.\"executor_id\"",
+                        "metric.label.\"app_name\"",
+                        "metric.label.\"app_id\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/ExecutorMetrics/JVMOffHeapMemory\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_MAX",
+                      "groupByFields": [
+                        "metric.label.\"executor_id\"",
+                        "metric.label.\"app_name\"",
+                        "metric.label.\"app_id\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "JVM memory per executor",
+          "id": ""
+        }
+      },
+      {
+        "yPos": 247,
+        "width": 14,
+        "height": 19,
+        "widget": {
+          "xyChart": {
+            "dataSets": [
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/ExecutorMetrics/OnHeapStorageMemory\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_MAX",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metric.label.\"executor_id\"",
+                        "metric.label.\"app_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              },
+              {
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "filter": "metric.type=\"custom.googleapis.com/spark/executor/ExecutorMetrics/OffHeapStorageMemory\" resource.type=\"gce_instance\"",
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "perSeriesAligner": "ALIGN_MAX",
+                      "crossSeriesReducer": "REDUCE_MAX",
+                      "groupByFields": [
+                        "metric.label.\"app_id\"",
+                        "metric.label.\"executor_id\"",
+                        "metric.label.\"app_name\""
+                      ]
+                    }
+                  },
+                  "unitOverride": "",
+                  "outputFullDuration": false
+                },
+                "plotType": "LINE",
+                "legendTemplate": "",
+                "minAlignmentPeriod": "60s",
+                "targetAxis": "Y1",
+                "dimensions": [],
+                "measures": [],
+                "breakdowns": []
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            },
+            "chartOptions": {
+              "mode": "COLOR",
+              "showLegend": false,
+              "displayHorizontal": false
+            }
+          },
+          "title": "Executor Storage memory",
+          "id": ""
+        }
+      },
+      {
+        "yPos": 181,
+        "width": 48,
+        "height": 85,
+        "widget": {
+          "title": "Spark Executor Level",
+          "collapsibleGroup": {
+            "collapsed": false
+          },
+          "id": ""
+        }
+      }
+    ]
+  },
+  "dashboardFilters": [],
+  "labels": {}
+}
