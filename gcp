@@ -1,4 +1,12 @@
-{
+One of the potential solution could be:
+
+GCP Asset Inventory allows to get Labels of submitted job in DP and their JOB_ID. We can use Assets API or gcloud asset CLI to grab the data from GCP Assets Inventory. That allows us to know JOB_ID of submitted job by particular client who add labels to the job.
+
+Dataproc Cusom metrics are enabled in our case and we can know resource usage of each ob by JOB_ID.
+
+The metrics are available in GCP Monitoring.
+
+Awareness of resource consumption by JOB_ID allow us to calculate cost of the job. We can add such a logic to GCP monitoring dashboard
   "displayName": "Dataproc on GCE - Spark Dashboard",
   "mosaicLayout": {
     "columns": 48,
